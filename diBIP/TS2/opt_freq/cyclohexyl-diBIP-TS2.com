@@ -3,7 +3,7 @@
 %nprocshared=16
 #p opt=(readfc,tight,ts,recalcfc=6,noeigentest) freq=internalmodes
 b3lyp/6-31g(d,p) scrf=(cpcm,solvent=dichloromethane,read) nosymm
-guess=read empiricaldispersion=gd3bj int=grid=ultrafine
+guess=read empiricaldispersion=gd3bj int=grid=superfinegrid
 
 cyclohexylimine diBIP oxidized, second transition state optimization
 
