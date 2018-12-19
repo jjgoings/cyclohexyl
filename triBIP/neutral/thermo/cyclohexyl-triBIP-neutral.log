@@ -2,8 +2,8 @@
  Input=cyclohexyl-triBIP-neutral.com
  Output=cyclohexyl-triBIP-neutral.log
  Initial command:
- /gpfs/apps/hpc/Apps/Restricted/Gaussian/Rev_A.03/g16/l1.exe "/gpfs/scratch60/fas/hammes_schiffer/jg2487/c43n04/Gau-87219.inp" -scrdir="/gpfs/scratch60/fas/hammes_schiffer/jg2487/c43n04/"
- Entering Link 1 = /gpfs/apps/hpc/Apps/Restricted/Gaussian/Rev_A.03/g16/l1.exe PID=     87220.
+ /gpfs/apps/hpc/Apps/Restricted/Gaussian/Rev_A.03/g16/l1.exe "/gpfs/scratch60/fas/hammes_schiffer/jg2487/c43n03/Gau-390733.inp" -scrdir="/gpfs/scratch60/fas/hammes_schiffer/jg2487/c43n03/"
+ Entering Link 1 = /gpfs/apps/hpc/Apps/Restricted/Gaussian/Rev_A.03/g16/l1.exe PID=    390734.
   
  Copyright (c) 1988,1990,1992,1993,1995,1998,2003,2009,2016,
             Gaussian, Inc.  All Rights Reserved.
@@ -77,7 +77,7 @@
  
  ******************************************
  Gaussian 16:  ES64L-G16RevA.03 25-Dec-2016
-                16-Dec-2018 
+                19-Dec-2018 
  ******************************************
  %chk=cyclohexyl-triBIP-neutral.chk
  %mem=10GB
@@ -90,7 +90,7 @@
  2/9=110,12=2,15=1,40=1/2;
  7/8=21,25=11,30=1/16;
  99/5=2/99;
- Leave Link    1 at Sun Dec 16 14:43:07 2018, MaxMem=  1342177280 cpu:               7.4 elap:               0.5
+ Leave Link    1 at Wed Dec 19 09:39:44 2018, MaxMem=  1342177280 cpu:               7.9 elap:               0.5
  (Enter /gpfs/apps/hpc/Apps/Restricted/Gaussian/Rev_A.03/g16/l101.exe)
  Structure from the checkpoint file:  "cyclohexyl-triBIP-neutral.chk"
  -------------------------------------------
@@ -261,7 +261,7 @@
  NQMom=    0.0000000   0.0000000   0.0000000   0.0000000   0.0000000   0.0000000   0.0000000
  NMagM=    0.0000000   2.7928460   2.7928460   2.7928460   2.7928460   2.7928460   2.7928460
  AtZNuc=   6.0000000   1.0000000   1.0000000   1.0000000   1.0000000   1.0000000   1.0000000
- Leave Link  101 at Sun Dec 16 14:43:07 2018, MaxMem=  1342177280 cpu:               5.7 elap:               0.4
+ Leave Link  101 at Wed Dec 19 09:39:44 2018, MaxMem=  1342177280 cpu:               5.5 elap:               0.4
  (Enter /gpfs/apps/hpc/Apps/Restricted/Gaussian/Rev_A.03/g16/l103.exe)
 
  GradGradGradGradGradGradGradGradGradGradGradGradGradGradGradGradGradGrad
@@ -729,7 +729,7 @@
  Number of steps in this run=    461 maximum allowed number of steps=    462.
  GradGradGradGradGradGradGradGradGradGradGradGradGradGradGradGradGradGrad
 
- Leave Link  103 at Sun Dec 16 14:43:07 2018, MaxMem=  1342177280 cpu:               0.5 elap:               0.1
+ Leave Link  103 at Wed Dec 19 09:39:45 2018, MaxMem=  1342177280 cpu:               0.5 elap:               0.1
  (Enter /gpfs/apps/hpc/Apps/Restricted/Gaussian/Rev_A.03/g16/l202.exe)
  Symmetry turned off by external request.
  Stoichiometry    C36H33N7O
@@ -820,7 +820,7 @@
      77          1           0       11.544614    3.832861    1.074720
  ---------------------------------------------------------------------
  Rotational constants (GHZ):           0.1703460           0.0230377           0.0203641
- Leave Link  202 at Sun Dec 16 14:43:07 2018, MaxMem=  1342177280 cpu:               1.3 elap:               0.1
+ Leave Link  202 at Wed Dec 19 09:39:45 2018, MaxMem=  1342177280 cpu:               0.8 elap:               0.1
  (Enter /gpfs/apps/hpc/Apps/Restricted/Gaussian/Rev_A.03/g16/l716.exe)
  Electric field and nuclear coordinate derivatives read from checkpoint file.
  Dipole        = 3.95947292D+00 1.48498135D+00 6.20968424D-01
@@ -26036,7 +26036,7 @@
  Cartesian Forces:  Max     0.000019009 RMS     0.000005596
  FormGI is forming the generalized inverse of G from B-inverse, IUseBI=4.
  GSVD:  received Info=                   1 from GESDD.
- Leave Link  716 at Sun Dec 16 14:43:08 2018, MaxMem=  1342177280 cpu:               7.5 elap:               0.5
+ Leave Link  716 at Wed Dec 19 09:39:45 2018, MaxMem=  1342177280 cpu:               6.9 elap:               0.5
  (Enter /gpfs/apps/hpc/Apps/Restricted/Gaussian/Rev_A.03/g16/l9999.exe)
 
  ----------------------------------------------------------------------
@@ -26169,10 +26169,10 @@
  This type of calculation cannot be archived.
 
 
- ERROR IS THE FORCE THAT WELDS MEN TOGETHER....
- TRUTH IS COMMUNICATED TO MEN ONLY BY DEEDS OF TRUTH.
-           TOLSTOI,MY RELIGION
- Job cpu time:       0 days  0 hours  0 minutes 23.0 seconds.
+ THE POLHOLDE ROLLS WITHOUT SLIPPING ON THE HERPOLHOLDE LYING IN
+ THE INVARIABLE PLANE.
+ H.GOLDSTEIN, "CLASSICAL MECHANICS", PG 161
+ Job cpu time:       0 days  0 hours  0 minutes 22.5 seconds.
  Elapsed time:       0 days  0 hours  0 minutes  1.6 seconds.
  File lengths (MBytes):  RWF=     72 Int=      0 D2E=      0 Chk=     84 Scr=      8
- Normal termination of Gaussian 16 at Sun Dec 16 14:43:08 2018.
+ Normal termination of Gaussian 16 at Wed Dec 19 09:39:45 2018.

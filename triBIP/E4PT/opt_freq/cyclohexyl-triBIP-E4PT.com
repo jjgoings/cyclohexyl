@@ -1,7 +1,7 @@
 %chk=cyclohexyl-triBIP-E4PT.chk
 %mem=10GB
 %nprocshared=16
-#p opt=tight freq=internalmodes b3lyp/6-31g(d,p)
+#p opt=(calcall,tight) freq=internalmodes b3lyp/6-31g(d,p)
 scrf=(cpcm,solvent=dichloromethane,read) nosymm empiricaldispersion=gd3bj
 int=grid=ultrafine
 
