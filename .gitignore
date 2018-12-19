@@ -1,3 +1,5 @@
 *.chk
 *.sh
 slurm*
+Goodvibes_output.dat
+
