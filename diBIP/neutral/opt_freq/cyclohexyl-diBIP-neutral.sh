@@ -3,7 +3,7 @@
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=16
 #SBATCH --partition=pi_hammes_schiffer,day,week
-#SBATCH -t 04:00:00
+#SBATCH -t 24:00:00
 
 module load Apps/Gaussian/2016-A03
 

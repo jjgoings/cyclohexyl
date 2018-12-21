@@ -20,7 +20,7 @@ class InternalMode(object):
 class IRSpec(object):
     def __init__(self,logfile):
         self.data  = cclib.io.ccread(logfile)
-        self.scale = 0.9649 # fit to triBIP protonated imine 
+        self.scale = 0.9631 # fit to triBIP protonated imine 
         self.freqs = self.data.vibfreqs*self.scale
         self.irs   = self.data.vibirs
         self.modes = dict()
