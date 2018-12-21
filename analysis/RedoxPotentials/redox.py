@@ -10,7 +10,7 @@ def gibbs(prefix,configuration,mode=1):
 
         command = ["python", "-m", "goodvibes", 
                     "-q", "grimme",
-                    "-v", "0.9649",
+                    "-v", "0.9631",
                     "-f", "100.0",
                     filename]   
  
