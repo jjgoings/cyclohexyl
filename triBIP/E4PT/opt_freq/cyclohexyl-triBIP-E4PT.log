@@ -5805,3 +5805,37 @@
  FMM levels:  10  Number of levels for PrismC:   9
  G2DrvN:  IPasSy=1 do centers   24 through   47.
  Calling FoFCou, ICntrl=  3107 FMM=T I1Cent=   0 AccDes= 0.00D+00.
+ G2DrvN:  IPasSy=1 do centers   48 through   71.
+ Calling FoFCou, ICntrl=  3107 FMM=T I1Cent=   0 AccDes= 0.00D+00.
+ G2DrvN:  IPasSy=1 do centers   72 through   95.
+ Calling FoFCou, ICntrl=  3107 FMM=T I1Cent=   0 AccDes= 0.00D+00.
+ NEqPCM:  Using equilibrium solvation (IEInf=0, Eps=   8.9300, EpsInf=   2.0283)
+ G2PCM: DoFxE=T DoFxN=T DoGrad=T DoDP/DQ/DG/TGxP=FFFF NFrqRd=   0 IEInf=0 SqF1=F DoCFld=F IF1Alg=4.
+ GePol: Maximum number of non-zero 1st derivatives   =     206
+ End of G2Drv F.D. properties file   721 does not exist.
+ End of G2Drv F.D. properties file   722 does not exist.
+ End of G2Drv F.D. properties file   788 does not exist.
+ Leave Link 1110 at Fri Dec 21 18:06:42 2018, MaxMem=  1342177280 cpu:           34606.6 elap:            2166.4
+ (Enter /gpfs/apps/hpc/Apps/Restricted/Gaussian/Rev_A.03/g16/l1002.exe)
+ Minotr:  UHF open shell wavefunction.
+          IDoAtm=11111111111111111111111111111111111111111111111111
+          IDoAtm=111111111111111111111111111111111111111111111
+ NEqPCM:  Using equilibrium solvation (IEInf=0, Eps=   8.9300, EpsInf=   2.0283)
+          Direct CPHF calculation.
+          Differentiating once with respect to electric field.
+                with respect to dipole field.
+          Differentiating once with respect to nuclear coordinates.
+          Requested convergence is 1.0D-08 RMS, and 1.0D-07 maximum.
+          Secondary convergence is 1.0D-12 RMS, and 1.0D-12 maximum.
+          NewPWx=T KeepS1=F KeepF1=F KeepIn=T MapXYZ=F SortEE=F KeepMc=T.
+        29543 words used for storage of precomputed grid.
+ Two-electron integral symmetry not used.
+          MDV=    1342177280 using IRadAn=       1.
+          Solving linear equations simultaneously, MaxMat=      72.
+ FoF2E skips out because all densities are zero.
+ CalDSu exits because no D1Ps are significant.
+ FoFJK:  IHMeth= 1 ICntrl=       0 DoSepK=F KAlg= 0 I1Cent=           0 FoldK=F
+ IRaf= 490000000 NMat=      36 IRICut=       1 DoRegI=T DoRafI=F ISym2E= 0 IDoP0=0 IntGTp=1.
+          There are   288 degrees of freedom in the 1st order CPHF.  IDoFFX=6 NUNeed=     3.
+    288 vectors produced by pass  0 Test12= 2.82D-13 1.00D-09 XBig12= 2.89D+03 2.13D+01.
+ AX will form    36 AO Fock derivatives at one time.
