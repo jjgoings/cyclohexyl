@@ -32,7 +32,6 @@ class Molecule(object):
     def __init__(self,prefix):
         self.prefix  = str(prefix)
         path = '../../'+self.prefix+'BIP/'
-        #self.neut  = IRSpec('./'+self.name+'/diBIP-imine-'+self.name+'.log')
 
         for state in ['neutral','E0PT','E1PT','E2PT','E3PT','E4PT']:
             logfile = path+state+'/opt_freq/cyclohexyl-'+self.prefix+'BIP-'+state+'.log'
@@ -41,12 +40,6 @@ class Molecule(object):
                 setattr(getattr(self,state.lower()),'name',self.prefix+'BIP-cyclohexylimine '+'('+state+')')
   
         self.freq  = self.neutral.x # assumes neutral always exists! 
-
-       # self.neut.name = 'diBIP-imine-' + self.name + ' neutral'
-       # self.ept.name  = 'diBIP-imine-' + self.name + ' oxidized (EPT)'
-       # self.e2pt.name = 'diBIP-imine-' + self.name + ' oxidized (E2PT)'
-       # self.e3pt.name = 'diBIP-imine-' + self.name + ' oxidized (E3PT)'
-
 
     def plotSpectra(self,curves=[],interpolate=False,num=5,xlim=None,save=None,show=True,colors=None):
         curves = [curves] if isinstance(curves, IRSpec) else curves
@@ -58,13 +51,13 @@ class Molecule(object):
             start = curves[0]
             finish = curves[-1]
             #ax.set_prop_cycle('color',plt.cm.Reds(np.linspace(0.3,1,num)))
-            for step in range(num):
+            for step in np.linspace(0,num,num=num):
                 curve = ((num - step)/num)*start.curve + (step/num)*finish.curve
                 if step == 0:
                     label = start.name
                     color = 'black'
                     zorder = 2
-                elif step == range(num)[-1]:
+                elif step == np.linspace(0,num,num=num)[-1]:
                     label = finish.name
                     color = 'r'
                     zorder = 3
@@ -74,6 +67,11 @@ class Molecule(object):
                     zorder = 1
                 plt.plot(self.freq,curve,label=label,color=color,zorder=zorder)
             plt.ylim([-50,max(max(start.curve),max(finish.curve))])
+            plt.axvspan(1700, 1615, facecolor='r', alpha=0.2,zorder=-1,label='C=N')
+            plt.axvspan(1615, 1580, facecolor='orange', alpha=0.2,zorder=-1,label='arom C=C')
+            plt.axvspan(1225,  950, facecolor='y', alpha=0.2,zorder=-1,label='arom C-H in-plane bend')
+            plt.axvspan(1410, 1310, facecolor='g', alpha=0.2,zorder=-1,label='phenol OH bend')
+            plt.axvspan(1210, 1190, facecolor='b', alpha=0.2,zorder=-1,label='phenol C-O stretch')
 
         # e.g. no interpolation! finish = None
         else:
@@ -149,11 +147,20 @@ class Molecule(object):
             np.savetxt(output,peaks,fmt='%.1f',delimiter=',')
 
 if __name__ == '__main__':
-    mono = Molecule('mono')
-    mono.plotSpectra(curves=[mono.neutral,mono.e2pt],interpolate=True,num=5,xlim=[1700,1300],show=False,save='monoIRSEC.pdf')
-    di = Molecule('di')
-    di.plotSpectra(curves=[di.neutral,di.e3pt],interpolate=True,num=5,xlim=[1700,1300],show=False,save='diIRSEC.pdf')
     tri = Molecule('tri')
-    tri.plotSpectra(curves=[tri.neutral,tri.e4pt],interpolate=True,num=5,xlim=[1700,1300],show=False,save='triIRSEC.pdf')
+    tri.plotSpectra(curves=[tri.neutral,tri.e4pt],interpolate=True,num=5,xlim=[1700,1300],show=True)
+
+#    mono = Molecule('mono')
+#    mono.plotSpectra(curves=[mono.neutral,mono.e2pt],interpolate=True,num=5,xlim=[1700,1300],show=False,save='monoIRSEC.pdf')
+#    di = Molecule('di')
+#    di.plotSpectra(curves=[di.neutral,di.e3pt],interpolate=True,num=5,xlim=[1700,1300],show=False,save='diIRSEC.pdf')
+#    tri = Molecule('tri')
+#    tri.plotSpectra(curves=[tri.neutral,tri.e4pt],interpolate=True,num=5,xlim=[1700,1300],show=False,save='triIRSEC.pdf')
+#    mono = Molecule('mono')
+#    mono.plotSpectra(curves=[mono.neutral,mono.e2pt],interpolate=True,num=5,xlim=[3700,3000],show=False,save='monoIRSEC_3500.pdf')
+#    di = Molecule('di')
+#    di.plotSpectra(curves=[di.neutral,di.e3pt],interpolate=True,num=5,xlim=[3700,3000],show=False,save='diIRSEC_3500.pdf')
+#    tri = Molecule('tri')
+#    tri.plotSpectra(curves=[tri.neutral,tri.e4pt],interpolate=True,num=5,xlim=[3700,3000],show=False,save='triIRSEC_3500.pdf')
 
 
