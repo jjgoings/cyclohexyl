@@ -55,7 +55,12 @@ class Molecule(object):
             # thermochem
             assert (data.temperature == data.thermo.temperature == 298.15) # K
             assert (data.pressure == data.thermo.pressure == 1.0) # atm
-            print("   [+] Themochemistry at 298.15K and 1atm...OK")
+            print("   [+] Thermochemistry at 298.15K and 1atm...OK")
+
+            # are frequencies consistent?
+            assert np.allclose(data.vibfreqs,data.thermo.vibfreqs) # Local minimum? 
+            print("   [+] Opt and Thermo have same unscaled frequencies?...OK")
+ 
 
             if self.prefix == 'mono': 
                 assert data.natom == data.thermo.natom == 69 
