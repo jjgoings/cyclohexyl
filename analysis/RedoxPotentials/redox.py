@@ -28,10 +28,10 @@ def gibbs(prefix,configuration,mode=1):
         data = cclib.io.ccread(filename)
         return data.freeenergy
 
-mode = 1
+mode = 2
 #ref = ('mono','E2PT',0.36)
-#ref = ('di','E3PT',0.30)
-ref = ('tri','E4PT',0.24)
+ref = ('di','E3PT',0.30)
+#ref = ('tri','E4PT',0.24)
 
 print('Using reference midpoint potential from: ','cyclohexyl-'+ref[0]+'-BIP','('+str(ref[2])+' V)') 
 
