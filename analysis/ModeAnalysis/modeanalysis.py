@@ -3,6 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import itertools
 import os
+import subprocess
 from tqdm import tqdm
 
 class Mode(object):
@@ -115,6 +116,7 @@ if __name__ == '__main__':
         if os.path.isfile(logfile):
             mol = IRSpec(logfile)
             mol.report(window=[1000,4000],irthresh=20.0,outfile=prefix+'BIP/cyclohexyl-'+prefix+'BIP-'+state+'-modes.txt')
+            subprocess.call(['babel','-i','g09',logfile,'-o','ct',prefix+'BIP/cyclohexyl-'+prefix+'BIP-'+state+'-structure.ct'])
             #plt.plot(mol.x,mol.curve)    
             #plt.xlim([3700,1000])
             #plt.show()
