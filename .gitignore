@@ -1,5 +1,7 @@
 *.chk
 *.sh
+*.fchk
+*.cube
 slurm*
 Goodvibes_output.dat
 .DS_Store
