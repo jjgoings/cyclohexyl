@@ -29,11 +29,6 @@ def gibbs(prefix,configuration,mode=1):
         return data.freeenergy
 
 mode = 2
-#ref = ('mono','E2PT',0.36)
-ref = ('di','E3PT',0.30)
-#ref = ('tri','E4PT',0.24)
-
-print('Using reference midpoint potential from: ','cyclohexyl-'+ref[0]+'-BIP ('+ref[1]+')','('+str(ref[2])+' V)') 
 
 #mono = ('mono','E2PT')
 #di   = ('di','E3PT')
@@ -52,13 +47,9 @@ tri2  = ('tri','E2PT')
 tri3  = ('tri','E3PT')
 tri4  = ('tri','E4PT')
 
-for A in [mono0,mono1,mono2,di0,di1,di2,di3,tri0,tri1,tri2,tri3,tri4]:
-    dGc = (gibbs(ref[0],'neutral',mode) + gibbs(A[0],A[1],mode) - gibbs(A[0],'neutral',mode) - gibbs(ref[0],ref[1],mode))
-    #Eref = ref[2] 
-    Eref = ref[2]
-    #print('E(cyclohexyl-'+A[0]+'-BIP-'+A[1]+'):  \t','{:.3f} V'.format(dGc*27.2114 + Eref))
-    print('E(cyclohexyl-'+A[0]+'-BIP-'+A[1]+'):  \t','{:.2f} V'.format((dGc*27.2114 + Eref)*23.060541945329))
-#    print('dG(cyclohexyl-'+A[0]+'-BIP-'+A[1]+'):  \t','{:.4f} kcal/mol'.format((gibbs(A[0],A[1],mode) - gibbs(A[0],'neutral',mode))*627.509))
+for A in [tri0,tri1,tri2,tri3,tri4]:
+    dGc = gibbs(A[0],A[1],mode) - gibbs('tri','neutral',mode)
+    print('E(cyclohexyl-'+A[0]+'-BIP-'+A[1]+'):  \t','{:.2f} kcal/mol'.format((dGc*627.509)))
 
 
 

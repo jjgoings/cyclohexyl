@@ -12,7 +12,7 @@ class IRSpec(object):
         self.scale = 0.9631 # fit to tri-BIP E4PT protonated imine 
         self.freqs = self.data.vibfreqs*self.scale
         self.irs   = self.data.vibirs
-        self.FWHM  = 6
+        self.FWHM  = 12
         self.xlim  = (0,4000,0.5)
         self.curvefit()
     
@@ -37,7 +37,10 @@ class Molecule(object):
             logfile = path+state+'/opt_freq/cyclohexyl-'+self.prefix+'BIP-'+state+'.log'
             if os.path.isfile(logfile):
                 setattr(self,state.lower(),IRSpec(path+state+'/opt_freq/cyclohexyl-'+self.prefix+'BIP-'+state+'.log'))
-                setattr(getattr(self,state.lower()),'name',self.prefix+'BIP-cyclohexylimine '+'('+state+')')
+                if state == 'neutral':
+                    setattr(getattr(self,state.lower()),'name','['+self.prefix+'-BIP-cyclohexylimine]')
+                else:
+                    setattr(getattr(self,state.lower()),'name','['+self.prefix+'-BIP-cyclohexylimine]$^{+\\bullet}$')
   
         self.freq  = self.neutral.x # assumes neutral always exists! 
 
@@ -46,6 +49,9 @@ class Molecule(object):
         if not xlim:
             xlim = [max(self.freq),min(self.freq)]
         fig,ax = plt.subplots(figsize=(8,6))
+        ax.tick_params(width=2)
+        for axis in ['top','bottom','left','right']:
+            ax.spines[axis].set_linewidth(2)
 
         if interpolate:
             start = curves[0]
@@ -59,19 +65,26 @@ class Molecule(object):
                     zorder = 2
                 elif step == np.linspace(0,num,num=num)[-1]:
                     label = finish.name
-                    color = 'r'
+                    if not colors:
+                        color = 'r'
+                    else:
+                        color = colors
                     zorder = 3
                 else:
                     label = None
                     color = 'gray'
                     zorder = 1
-                plt.plot(self.freq,curve,label=label,color=color,zorder=zorder)
-            plt.ylim([-50,max(max(start.curve),max(finish.curve))])
-            plt.axvspan(1700, 1615, facecolor='r', alpha=0.2,zorder=-1,label='C=N')
-            plt.axvspan(1615, 1580, facecolor='orange', alpha=0.2,zorder=-1,label='arom C=C')
-            plt.axvspan(1225,  950, facecolor='y', alpha=0.2,zorder=-1,label='arom C-H in-plane bend')
-            plt.axvspan(1410, 1310, facecolor='g', alpha=0.2,zorder=-1,label='phenol OH bend')
-            plt.axvspan(1210, 1190, facecolor='b', alpha=0.2,zorder=-1,label='phenol C-O stretch')
+                plt.plot(self.freq,curve,label=label,color=color,zorder=zorder,lw=2)
+           #plt.ylim([-50,max(max(start.curve),max(finish.curve))])
+            plt.ylim([-50,1200])
+            #w = 3
+            #plt.axvspan(1659+w, 1638-w, facecolor='r', alpha=0.2,zorder=-1,label='imine C=N str')
+            #plt.axvspan(1616+w, 1563-w, facecolor='orange', alpha=0.2,zorder=-1,label='aromatic sym C=C str')
+            #plt.axvspan(1532+w, 1502-w, facecolor='y', alpha=0.2,zorder=-1,label='interaromatic C-C str')
+            #plt.axvspan(1493+w, 1477-w, facecolor='g', alpha=0.2,zorder=-1,label='benzimidazole$_1$ NH bend + phenol C=O str')
+            #plt.axvspan(1471+w, 1376-w, facecolor='b', alpha=0.2,zorder=-1,label='t-butyl C-H bend')
+            #plt.axvspan(1428+w, 1366-w, facecolor='purple', alpha=0.2,zorder=-1,label='aromatic asym C=C str')
+            #plt.axvspan(1355+w, 1334-w, facecolor='pink', alpha=0.2,zorder=-1,label='benzimidazole C=N str')
 
         # e.g. no interpolation! finish = None
         else:
@@ -83,19 +96,19 @@ class Molecule(object):
                     color = colors[idx]
                 else: color = None
                 plt.plot(self.freq,spec.curve,label=spec.name,color=color)
-                plt.ylim([-50,2000])
+                plt.ylim([-50,1300])
             
             
-        plt.legend()
+        plt.legend(fontsize=14)
         plt.xlim(xlim)
-        plt.xticks(np.arange(min(xlim),max(xlim),50))
+        plt.xticks(np.arange(min(xlim),max(xlim),50),fontsize=14)
         ax.set_xticks(np.arange(min(xlim),max(xlim),25),minor=True)
        
-        plt.yticks([0])
+        plt.yticks([0],fontsize=14)
         #plt.grid(color='gray',alpha=0.4)
         plt.grid(color='gray',alpha=0.4,which='minor',ls='--')
-        plt.xlabel(r'$\tilde{\nu}$ (cm$^{-1}$)')
-        plt.ylabel('Intensity (arb. units)')
+        plt.xlabel(r'$\tilde{\nu}$ (cm$^{-1}$)',fontsize=24)
+        plt.ylabel('Intensity (arb. units)',fontsize=24)
         if save:
             if isinstance(save,str):
                 plt.tight_layout()
@@ -151,16 +164,16 @@ if __name__ == '__main__':
 #    tri.plotSpectra(curves=[tri.neutral,tri.e4pt],interpolate=True,num=5,xlim=[1700,1300],show=True)
 
     mono = Molecule('mono')
-    mono.plotSpectra(curves=[mono.neutral,mono.e2pt],interpolate=True,num=5,xlim=[1700,1300],show=False,save='monoIRSEC.pdf')
+    mono.plotSpectra(curves=[mono.neutral,mono.e2pt],interpolate=True,num=5,xlim=[1700,1300],show=False,save='monoIRSEC.pdf',colors='b')
     di = Molecule('di')
-    di.plotSpectra(curves=[di.neutral,di.e3pt],interpolate=True,num=5,xlim=[1700,1300],show=False,save='diIRSEC.pdf')
+    di.plotSpectra(curves=[di.neutral,di.e3pt],interpolate=True,num=5,xlim=[1700,1300],show=False,save='diIRSEC.pdf',colors='g')
     tri = Molecule('tri')
-    tri.plotSpectra(curves=[tri.neutral,tri.e4pt],interpolate=True,num=5,xlim=[1700,1300],show=False,save='triIRSEC.pdf')
+    tri.plotSpectra(curves=[tri.neutral,tri.e4pt],interpolate=True,num=5,xlim=[1700,1300],show=False,save='triIRSEC.pdf',colors='r')
     mono = Molecule('mono')
-    mono.plotSpectra(curves=[mono.neutral,mono.e2pt],interpolate=True,num=5,xlim=[3700,3000],show=False,save='monoIRSEC_3500.pdf')
+    mono.plotSpectra(curves=[mono.neutral,mono.e2pt],interpolate=True,num=5,xlim=[3500,3200],show=False,save='monoIRSEC_3500.pdf',colors='b')
     di = Molecule('di')
-    di.plotSpectra(curves=[di.neutral,di.e3pt],interpolate=True,num=5,xlim=[3700,3000],show=False,save='diIRSEC_3500.pdf')
+    di.plotSpectra(curves=[di.neutral,di.e3pt],interpolate=True,num=5,xlim=[3500,3200],show=False,save='diIRSEC_3500.pdf',colors='g')
     tri = Molecule('tri')
-    tri.plotSpectra(curves=[tri.neutral,tri.e4pt],interpolate=True,num=5,xlim=[3700,3000],show=False,save='triIRSEC_3500.pdf')
+    tri.plotSpectra(curves=[tri.neutral,tri.e4pt],interpolate=True,num=5,xlim=[3500,3150],show=False,save='triIRSEC_3500.pdf',colors='r')
 
 
