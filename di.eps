@@ -1,0 +1,744 @@
+%!PS-Adobe-3.0 EPSF-3.0
+%%BoundingBox: 47 21 564 770
+%%Title: cyclohexyl-diBIP-neutral.log
+%%Creator: Created by GaussView 6.0.16
+%%CreationDate: 2/8/19 2:47 PM
+%%Pages: 1
+%%EndComments
+
+/mainFontSize 15 def
+/MainFont /Helvetica-Bold findfont mainFontSize scalefont def
+% Convoluted method for determining mainFontHeight
+0 0 moveto MainFont setfont (A) false charpath flattenpath pathbbox
+	/mainFontHeight exch def pop pop pop newpath
+
+% Global defines
+/PrintBackground 1 def
+/PrintBorder 1 def
+/PrintHeader 1 def
+/borderWidthOffset {  0.100 inch } def
+/borderHeightOffset {  0.100 inch } def
+/inch {72.0 mul} def
+/strokeLineWidth 1 def
+/borderLineWidth 2 def
+/halfBorderWidth borderLineWidth 2 div def
+
+/drawStrokedCircle
+{
+	/rad exch def
+	/ypos exch def
+	/xpos exch def
+	/circleColor exch def
+	xpos ypos rad 0 360 arc
+	gsave
+		circleColor setrgbcolor
+		fill
+	grestore
+	strokeLineWidth setlinewidth
+	0 0 0 setrgbcolor
+	stroke
+}def
+
+/drawSimpleCircle
+{
+	/rad exch def
+	/ypos exch def
+	/xpos exch def
+	/circleColor exch def
+	xpos ypos rad 0 360 arc
+	circleColor setrgbcolor
+	fill
+}def
+
+/drawWireAtom
+{
+	/ypos exch def
+	/xpos exch def
+	/lineColor exch def
+	1 setlinewidth
+	lineColor setrgbcolor
+	xpos ypos wireAtomSize add moveto
+	xpos ypos wireAtomSize sub lineto
+	stroke
+	xpos wireAtomSize add ypos moveto
+	xpos wireAtomSize sub ypos lineto
+	stroke
+}def
+
+/drawStrokedLine
+{
+	setlinecap
+	setdash
+	/lineWidth exch def
+	/y2 exch def
+	/x2 exch def
+	/y1 exch def
+	/x1 exch def
+	/bondColor exch def
+	gsave
+		colorBlack setrgbcolor
+		lineWidth setlinewidth
+		x1 y1 moveto
+		x2 y2 lineto
+		stroke
+	grestore
+	lineWidth strokeLineWidth sub setlinewidth
+	bondColor setrgbcolor
+	x1 y1  moveto
+	x2 y2  lineto
+	stroke
+	solid setdash
+}def
+
+/drawSimpleLine
+{
+	setlinecap
+	setdash
+	setlinewidth
+	/y2 exch def
+	/x2 exch def
+	/y1 exch def
+	/x1 exch def
+	/bondColor exch def
+	bondColor setrgbcolor
+	x1 y1 moveto
+	x2 y2 lineto
+	stroke
+	solid setdash
+}def
+
+/drawTriangle
+{
+	/y3 exch def
+	/x3 exch def
+	/y2 exch def
+	/x2 exch def
+	/y1 exch def
+	/x1 exch def
+	/triangleColor exch def
+	x1 y1 moveto
+	x2 y2 lineto
+	x3 y3 lineto
+	closepath
+	gsave
+		triangleColor setrgbcolor
+		fill
+	grestore
+	strokeLineWidth setlinewidth
+	colorBlack setrgbcolor
+	stroke
+}def
+
+/drawSimpleBox
+{
+	setlinewidth
+	/y2 exch def
+	/x2 exch def
+	/y1 exch def
+	/x1 exch def
+	/boxColor exch def
+	0 setlinejoin
+	boxColor setrgbcolor
+	x1 y1 x2 x1 sub y2 y1 sub rectstroke
+} def
+
+/drawRSimpleBox
+{
+	setlinewidth
+	/height exch def
+	/width exch def
+	/y exch def
+	/x exch def
+	/boxColor exch def
+	0 setlinejoin
+	boxColor setrgbcolor
+	x y width height rectstroke
+} def
+
+/drawCenteredText
+{
+	/fontheight exch def
+	/textfont exch def
+	/ypos exch def
+	/xpos exch def
+	/label exch def
+	textfont setfont
+	label stringwidth
+	/lheight exch def
+	/lwidth exch def
+	colorBlack setrgbcolor
+	xpos lwidth 0.5 mul sub ypos fontheight 0.5 mul sub moveto
+	label show
+	newpath
+}def
+
+/drawLeftJustifiedText
+{
+	/line_num exch def
+	/line_height exch def
+	/textfont exch def
+	/ypos exch def
+	/xpos exch def
+	/label exch def
+	textfont setfont
+	label stringwidth
+	/lheight exch def
+	/lwidth exch def
+	colorBlack setrgbcolor
+	xpos ypos line_height line_num mul sub moveto
+	label show
+	newpath
+}def
+
+/drawBackground
+{
+	colorBackground setrgbcolor
+	boundingBoxLeft boundingBoxBottom boundingBoxWidth boundingBoxHeight rectfill
+} def
+
+/drawBorder
+{
+	/left boundingBoxLeft halfBorderWidth add def
+	/bottom boundingBoxBottom halfBorderWidth add def
+	/width boundingBoxWidth halfBorderWidth 2 mul sub def
+	/height boundingBoxHeight halfBorderWidth 2 mul sub def
+	colorBlack left bottom width height borderLineWidth drawRSimpleBox
+} def
+
+/drawHeader
+{
+	/xpos boundingBoxLeft borderWidthOffset add def
+	/ypos boundingBoxTop borderHeightOffset sub def
+	(cyclohexyl-diBIP-neutral.log) xpos ypos MainFont mainFontSize 1 drawLeftJustifiedText
+	(Created by GaussView 6.0.16) xpos ypos MainFont mainFontSize 2 drawLeftJustifiedText
+	(2/8/19 2:47 PM) xpos ypos MainFont mainFontSize 3 drawLeftJustifiedText
+} def
+
+%%Page: (G1:M1:V1 - cyclohexyl-diBIP-neutral.log (/gpfs/loomis/home.grace/fas/hammes_schiffer/jg2487/cyclohexyl/diBIP/neutral/opt_freq/cyclohexyl-diBIP-neutral.log))  1
+
+% Color defines
+/colorBlack {  0.000  0.000  0.000 } def
+/colorRed {  1.000  0.000  0.000 } def
+/colorGreen {  0.000  1.000  0.000 } def
+/colorBlue {  0.000  0.000  1.000 } def
+/colorYellow {  1.000  1.000  0.000 } def
+/colorMagenta {  1.000  0.000  1.000 } def
+/colorCyan {  0.000  1.000  1.000 } def
+/colorWhite {  1.000  1.000  1.000 } def
+/colorBallStick {  0.400  0.400  0.400 } def
+/colorBallBond {  0.800  0.800  0.800 } def
+/colorWireFrame {  0.800  0.800  0.800 } def
+/colorTube {  0.400  0.400  0.400 } def
+/colorAxes {  0.000  0.000  0.000 } def
+/colorDDipole {  0.750  0.500  0.000 } def
+/colorBackground {  1.000  1.000  1.000 } def
+/colorVibVector {  0.000  0.500  0.750 } def
+
+% Size defines
+/boundingBoxLeft 47 def
+/boundingBoxRight 564 def
+/boundingBoxBottom 21 def
+/boundingBoxTop 770 def
+/boundingBoxWidth 517 def
+/boundingBoxHeight 749 def
+/widthBallStick  0.065 inch def
+/widthBallBond  0.037 inch def
+/widthTube  0.111 inch def
+/wireAtomSize {  0.037 inch } def
+/widthDDipole  0.037 inch def
+/widthVibVector  0.019 inch def
+/capped 1 def
+/nocap 0 def
+/solid {[] 0} def 
+/dashed {[4] 0} def
+
+%Font information
+/atomFontSize 6 def
+/AtomFont /Helvetica-Bold findfont atomFontSize scalefont def
+% Convoluted method for determining atomFontHeight
+0 0 moveto AtomFont setfont (A) false charpath flattenpath pathbbox
+	/atomFontHeight exch def pop pop pop newpath
+
+%Draw background (if PrintBackground = 1)
+PrintBackground 0 ne {drawBackground} if
+
+%Draw border (if PrintBorder = 1)
+PrintBorder 0 ne {drawBorder} if
+
+%Draw text labels (if PrintHeader = 1)
+PrintHeader 0 ne {drawHeader} if
+
+%Atom 66
+{  0.800  0.800  0.800 }  4.636 inch  1.985 inch  0.139 inch drawStrokedCircle
+
+%Atom 78
+{  0.800  0.800  0.800 }  1.964 inch  1.899 inch  0.139 inch drawStrokedCircle
+
+%Atom 51
+{  0.800  0.800  0.800 }  6.086 inch  7.762 inch  0.139 inch drawStrokedCircle
+
+%Atom 65
+{  0.800  0.800  0.800 }  5.331 inch  1.836 inch  0.139 inch drawStrokedCircle
+
+%Bond 65 63
+colorBallStick  5.209 inch  1.904 inch  5.055 inch  1.990 inch widthBallStick solid nocap drawStrokedLine
+
+%Atom 63
+{  0.560  0.560  0.560 }  4.888 inch  2.083 inch  0.191 inch drawStrokedCircle
+
+%Bond 63 30
+colorBallStick  4.721 inch  1.991 inch  4.679 inch  1.968 inch widthBallStick solid capped drawStrokedLine
+
+%Bond 63 64
+colorBallStick  4.926 inch  2.270 inch  4.960 inch  2.443 inch widthBallStick solid nocap drawStrokedLine
+
+%Atom 64
+{  0.800  0.800  0.800 }  4.988 inch  2.579 inch  0.139 inch drawStrokedCircle
+
+%Atom 55
+{  0.800  0.800  0.800 }  6.651 inch  8.772 inch  0.139 inch drawStrokedCircle
+
+%Bond 55 49
+colorBallStick  6.528 inch  8.708 inch  6.521 inch  8.704 inch widthBallStick solid capped drawStrokedLine
+
+%Atom 77
+{  0.800  0.800  0.800 }  1.622 inch  2.524 inch  0.139 inch drawStrokedCircle
+
+%Bond 77 75
+colorBallStick  1.652 inch  2.389 inch  1.688 inch  2.219 inch widthBallStick solid nocap drawStrokedLine
+
+%Atom 75
+{  0.560  0.560  0.560 }  1.729 inch  2.032 inch  0.191 inch drawStrokedCircle
+
+%Bond 75 31
+colorBallStick  1.907 inch  1.964 inch  1.958 inch  1.945 inch widthBallStick solid capped drawStrokedLine
+
+%Bond 75 76
+colorBallStick  1.565 inch  1.934 inch  1.413 inch  1.844 inch widthBallStick solid nocap drawStrokedLine
+
+%Atom 69
+{  0.800  0.800  0.800 }  4.154 inch  1.046 inch  0.139 inch drawStrokedCircle
+
+%Atom 76
+{  0.800  0.800  0.800 }  1.294 inch  1.773 inch  0.139 inch drawStrokedCircle
+
+%Atom 80
+{  0.800  0.800  0.800 }  2.476 inch  1.019 inch  0.139 inch drawStrokedCircle
+
+%Atom 56
+{  0.800  0.800  0.800 }  5.896 inch  8.830 inch  0.139 inch drawStrokedCircle
+
+%Bond 56 49
+colorBallStick  6.022 inch  8.771 inch  6.178 inch  8.697 inch widthBallStick solid nocap drawStrokedLine
+
+%Atom 44
+{  0.560  0.560  0.560 }  6.283 inch  7.910 inch  0.191 inch drawStrokedCircle
+
+%Bond 44 42
+colorBallStick  6.118 inch  7.813 inch  6.040 inch  7.768 inch widthBallStick solid capped drawStrokedLine
+
+%Bond 44 49
+colorBallStick  6.302 inch  8.100 inch  6.333 inch  8.426 inch widthBallStick solid nocap drawStrokedLine
+
+%Bond 44 50
+colorBallStick  6.457 inch  7.829 inch  6.617 inch  7.754 inch widthBallStick solid nocap drawStrokedLine
+
+%Atom 49
+{  0.560  0.560  0.560 }  6.351 inch  8.616 inch  0.191 inch drawStrokedCircle
+
+%Atom 50
+{  0.800  0.800  0.800 }  6.742 inch  7.695 inch  0.139 inch drawStrokedCircle
+
+%Atom 18
+{  0.800  0.800  0.800 }  2.204 inch  5.403 inch  0.139 inch drawStrokedCircle
+
+%Bond 18 13
+colorBallStick  2.343 inch  5.402 inch  2.513 inch  5.401 inch widthBallStick solid nocap drawStrokedLine
+
+%Atom 70
+{  0.800  0.800  0.800 }  4.865 inch  0.941 inch  0.139 inch drawStrokedCircle
+
+%Bond 70 67
+colorBallStick  4.741 inch  1.005 inch  4.585 inch  1.085 inch widthBallStick solid nocap drawStrokedLine
+
+%Atom 19
+{  0.800  0.800  0.800 }  2.801 inch  6.389 inch  0.139 inch drawStrokedCircle
+
+%Atom 13
+{  0.560  0.560  0.560 }  2.704 inch  5.400 inch  0.191 inch drawStrokedCircle
+
+%Atom 67
+{  0.560  0.560  0.560 }  4.415 inch  1.173 inch  0.191 inch drawStrokedCircle
+
+%Bond 19 14
+colorBallStick  2.868 inch  6.267 inch  2.950 inch  6.117 inch widthBallStick solid nocap drawStrokedLine
+
+%Bond 13 12
+colorBallStick  2.801 inch  5.236 inch  2.935 inch  5.007 inch widthBallStick solid nocap drawStrokedLine
+
+%Bond 13 14
+colorBallStick  2.804 inch  5.563 inch  2.942 inch  5.787 inch widthBallStick solid nocap drawStrokedLine
+
+%Bond 67 30
+colorBallStick  4.441 inch  1.362 inch  4.486 inch  1.687 inch widthBallStick solid nocap drawStrokedLine
+
+%Atom 35
+{  0.100  0.100  0.900 }  2.833 inch  4.233 inch  0.191 inch drawStrokedCircle
+
+%Atom 14
+{  0.560  0.560  0.560 }  3.042 inch  5.950 inch  0.191 inch drawStrokedCircle
+
+%Atom 12
+{  0.560  0.560  0.560 }  3.032 inch  4.843 inch  0.191 inch drawStrokedCircle
+
+%Atom 28
+{  0.800  0.800  0.800 }  4.326 inch  3.122 inch  0.139 inch drawStrokedCircle
+
+%Atom 30
+{  0.560  0.560  0.560 }  4.511 inch  1.876 inch  0.191 inch drawStrokedCircle
+
+%Bond 35 12
+colorBallStick  2.892 inch  4.414 inch  2.973 inch  4.661 inch widthBallStick solid nocap drawStrokedLine
+
+%Bond 35 17
+colorBallStick  2.990 inch  4.124 inch  3.183 inch  3.991 inch widthBallStick solid nocap drawStrokedLine
+
+%Bond 14 15
+colorBallStick  3.234 inch  5.951 inch  3.499 inch  5.952 inch widthBallStick solid nocap drawStrokedLine
+
+%Bond 12 11
+colorBallStick  3.223 inch  4.845 inch  3.493 inch  4.848 inch widthBallStick solid nocap drawStrokedLine
+
+%Bond 28 24
+colorBallStick  4.206 inch  3.053 inch  4.057 inch  2.968 inch widthBallStick solid nocap drawStrokedLine
+
+%Bond 30 25
+colorBallStick  4.346 inch  1.971 inch  4.061 inch  2.134 inch widthBallStick solid nocap drawStrokedLine
+
+%Bond 30 59
+colorBallStick  4.689 inch  1.947 inch  4.706 inch  1.954 inch widthBallStick solid capped drawStrokedLine
+
+%Atom 24
+{  0.560  0.560  0.560 }  3.891 inch  2.872 inch  0.191 inch drawStrokedCircle
+
+%Atom 25
+{  0.560  0.560  0.560 }  3.895 inch  2.229 inch  0.191 inch drawStrokedCircle
+
+%Atom 17
+{  0.560  0.560  0.560 }  3.341 inch  3.882 inch  0.191 inch drawStrokedCircle
+
+%Atom 33
+{  0.800  0.800  0.800 }  2.318 inch  3.659 inch  0.139 inch drawStrokedCircle
+
+%Atom 23
+{  0.560  0.560  0.560 }  3.335 inch  3.209 inch  0.191 inch drawStrokedCircle
+
+%Bond 24 23
+colorBallStick  3.728 inch  2.971 inch  3.499 inch  3.110 inch widthBallStick solid nocap drawStrokedLine
+
+%Bond 24 25
+colorBallStick  3.892 inch  2.681 inch  3.894 inch  2.420 inch widthBallStick solid nocap drawStrokedLine
+
+%Bond 25 26
+colorBallStick  3.726 inch  2.140 inch  3.488 inch  2.016 inch widthBallStick solid nocap drawStrokedLine
+
+%Bond 17 23
+colorBallStick  3.339 inch  3.691 inch  3.337 inch  3.400 inch widthBallStick solid nocap drawStrokedLine
+
+%Bond 17 34
+colorBallStick  3.498 inch  3.990 inch  3.707 inch  4.132 inch widthBallStick solid nocap drawStrokedLine
+
+%Bond 33 32
+colorBallStick  2.289 inch  3.524 inch  2.260 inch  3.394 inch widthBallStick solid nocap drawStrokedLine
+
+%Bond 23 22
+colorBallStick  3.168 inch  3.116 inch  2.927 inch  2.983 inch widthBallStick solid nocap drawStrokedLine
+
+%Atom 26
+{  0.560  0.560  0.560 }  3.319 inch  1.928 inch  0.191 inch drawStrokedCircle
+
+%Atom 15
+{  0.560  0.560  0.560 }  3.690 inch  5.953 inch  0.191 inch drawStrokedCircle
+
+%Atom 11
+{  0.560  0.560  0.560 }  3.684 inch  4.851 inch  0.191 inch drawStrokedCircle
+
+%Atom 22
+{  0.560  0.560  0.560 }  2.760 inch  2.890 inch  0.191 inch drawStrokedCircle
+
+%Atom 29
+{  0.800  0.800  0.800 }  3.314 inch  1.428 inch  0.139 inch drawStrokedCircle
+
+%Atom 32
+{  0.900  0.000  0.000 }  2.220 inch  3.207 inch  0.191 inch drawStrokedCircle
+
+%Atom 27
+{  0.560  0.560  0.560 }  2.750 inch  2.236 inch  0.191 inch drawStrokedCircle
+
+%Atom 34
+{  0.100  0.100  0.900 }  3.864 inch  4.240 inch  0.191 inch drawStrokedCircle
+
+%Atom 20
+{  0.800  0.800  0.800 }  3.930 inch  6.393 inch  0.139 inch drawStrokedCircle
+
+%Bond 26 27
+colorBallStick  3.151 inch  2.019 inch  2.918 inch  2.145 inch widthBallStick solid nocap drawStrokedLine
+
+%Bond 26 29
+colorBallStick  3.317 inch  1.737 inch  3.315 inch  1.567 inch widthBallStick solid nocap drawStrokedLine
+
+%Bond 15 16
+colorBallStick  3.790 inch  5.790 inch  3.929 inch  5.563 inch widthBallStick solid nocap drawStrokedLine
+
+%Bond 15 20
+colorBallStick  3.781 inch  6.120 inch  3.864 inch  6.271 inch widthBallStick solid nocap drawStrokedLine
+
+%Bond 11 16
+colorBallStick  3.786 inch  5.013 inch  3.928 inch  5.239 inch widthBallStick solid nocap drawStrokedLine
+
+%Bond 11 34
+colorBallStick  3.738 inch  4.667 inch  3.810 inch  4.424 inch widthBallStick solid nocap drawStrokedLine
+
+%Bond 22 27
+colorBallStick  2.757 inch  2.699 inch  2.753 inch  2.427 inch widthBallStick solid nocap drawStrokedLine
+
+%Bond 22 32
+colorBallStick  2.595 inch  2.987 inch  2.385 inch  3.111 inch widthBallStick solid nocap drawStrokedLine
+
+%Bond 27 31
+colorBallStick  2.585 inch  2.139 inch  2.302 inch  1.973 inch widthBallStick solid nocap drawStrokedLine
+
+%Bond 34 36
+colorBallStick  4.048 inch  4.189 inch  4.181 inch  4.152 inch widthBallStick solid nocap drawStrokedLine
+
+%Atom 16
+{  0.560  0.560  0.560 }  4.030 inch  5.400 inch  0.191 inch drawStrokedCircle
+
+%Atom 79
+{  0.560  0.560  0.560 }  2.242 inch  1.172 inch  0.191 inch drawStrokedCircle
+
+%Atom 31
+{  0.560  0.560  0.560 }  2.137 inch  1.876 inch  0.191 inch drawStrokedCircle
+
+%Bond 16 7
+colorBallStick  4.220 inch  5.391 inch  4.507 inch  5.378 inch widthBallStick solid nocap drawStrokedLine
+
+%Bond 79 31
+colorBallStick  2.214 inch  1.361 inch  2.165 inch  1.687 inch widthBallStick solid nocap drawStrokedLine
+
+%Bond 79 82
+colorBallStick  2.072 inch  1.084 inch  1.916 inch  1.003 inch widthBallStick solid nocap drawStrokedLine
+
+%Bond 31 71
+colorBallStick  1.965 inch  1.960 inch  1.963 inch  1.961 inch widthBallStick solid capped drawStrokedLine
+
+%Atom 36
+{  0.800  0.800  0.800 }  4.315 inch  4.115 inch  0.139 inch drawStrokedCircle
+
+%Atom 82
+{  0.800  0.800  0.800 }  1.793 inch  0.939 inch  0.139 inch drawStrokedCircle
+
+%Atom 7
+{  0.560  0.560  0.560 }  4.698 inch  5.369 inch  0.191 inch drawStrokedCircle
+
+%Bond 7 21
+colorBallStick  4.796 inch  5.205 inch  4.916 inch  5.004 inch widthBallStick solid nocap drawStrokedLine
+
+%Bond 7 37
+colorBallStick  4.812 inch  5.522 inch  4.963 inch  5.724 inch widthBallStick solid nocap drawStrokedLine
+
+%Atom 21
+{  0.100  0.100  0.900 }  5.015 inch  4.840 inch  0.191 inch drawStrokedCircle
+
+%Bond 21 2
+colorBallStick  5.199 inch  4.891 inch  5.444 inch  4.960 inch widthBallStick solid nocap drawStrokedLine
+
+%Atom 37
+{  0.100  0.100  0.900 }  5.077 inch  5.877 inch  0.191 inch drawStrokedCircle
+
+%Atom 38
+{  0.800  0.800  0.800 }  4.972 inch  6.335 inch  0.139 inch drawStrokedCircle
+
+%Bond 37 1
+colorBallStick  5.257 inch  5.813 inch  5.492 inch  5.729 inch widthBallStick solid nocap drawStrokedLine
+
+%Bond 37 38
+colorBallStick  5.034 inch  6.063 inch  5.003 inch  6.199 inch widthBallStick solid nocap drawStrokedLine
+
+%Atom 2
+{  0.560  0.560  0.560 }  5.628 inch  5.012 inch  0.191 inch drawStrokedCircle
+
+%Bond 2 1
+colorBallStick  5.641 inch  5.202 inch  5.659 inch  5.474 inch widthBallStick solid nocap drawStrokedLine
+
+%Bond 2 3
+colorBallStick  5.786 inch  4.905 inch  6.004 inch  4.758 inch widthBallStick solid nocap drawStrokedLine
+
+%Atom 1
+{  0.560  0.560  0.560 }  5.672 inch  5.665 inch  0.191 inch drawStrokedCircle
+
+%Atom 45
+{  0.800  0.800  0.800 }  5.415 inch  7.878 inch  0.139 inch drawStrokedCircle
+
+%Bond 1 6
+colorBallStick  5.838 inch  5.758 inch  6.067 inch  5.887 inch widthBallStick solid nocap drawStrokedLine
+
+%Bond 45 42
+colorBallStick  5.542 inch  7.821 inch  5.701 inch  7.750 inch widthBallStick solid nocap drawStrokedLine
+
+%Atom 8
+{  0.800  0.800  0.800 }  6.137 inch  4.150 inch  0.139 inch drawStrokedCircle
+
+%Atom 41
+{  0.100  0.100  0.900 }  5.786 inch  6.996 inch  0.191 inch drawStrokedCircle
+
+%Atom 3
+{  0.560  0.560  0.560 }  6.163 inch  4.651 inch  0.191 inch drawStrokedCircle
+
+%Bond 8 3
+colorBallStick  6.144 inch  4.289 inch  6.153 inch  4.460 inch widthBallStick solid nocap drawStrokedLine
+
+%Bond 41 39
+colorBallStick  5.942 inch  6.886 inch  6.112 inch  6.765 inch widthBallStick solid nocap drawStrokedLine
+
+%Bond 41 42
+colorBallStick  5.811 inch  7.186 inch  5.850 inch  7.483 inch widthBallStick solid nocap drawStrokedLine
+
+%Bond 3 4
+colorBallStick  6.331 inch  4.743 inch  6.557 inch  4.866 inch widthBallStick solid nocap drawStrokedLine
+
+%Atom 42
+{  0.560  0.560  0.560 }  5.875 inch  7.672 inch  0.191 inch drawStrokedCircle
+
+%Atom 68
+{  0.800  0.800  0.800 }  4.166 inch  0.996 inch  0.139 inch drawStrokedCircle
+
+%Atom 6
+{  0.560  0.560  0.560 }  6.234 inch  5.980 inch  0.191 inch drawStrokedCircle
+
+%Bond 6 5
+colorBallStick  6.390 inch  5.870 inch  6.604 inch  5.718 inch widthBallStick solid nocap drawStrokedLine
+
+%Bond 6 39
+colorBallStick  6.243 inch  6.171 inch  6.259 inch  6.464 inch widthBallStick solid nocap drawStrokedLine
+
+%Atom 39
+{  0.560  0.560  0.560 }  6.268 inch  6.655 inch  0.191 inch drawStrokedCircle
+
+%Bond 39 40
+colorBallStick  6.445 inch  6.728 inch  6.605 inch  6.795 inch widthBallStick solid nocap drawStrokedLine
+
+%Atom 4
+{  0.560  0.560  0.560 }  6.725 inch  4.957 inch  0.191 inch drawStrokedCircle
+
+%Bond 4 5
+colorBallStick  6.735 inch  5.148 inch  6.750 inch  5.416 inch widthBallStick solid nocap drawStrokedLine
+
+%Bond 4 9
+colorBallStick  6.886 inch  4.855 inch  7.029 inch  4.764 inch widthBallStick solid nocap drawStrokedLine
+
+%Atom 5
+{  0.560  0.560  0.560 }  6.760 inch  5.607 inch  0.191 inch drawStrokedCircle
+
+%Bond 5 10
+colorBallStick  6.931 inch  5.692 inch  7.082 inch  5.767 inch widthBallStick solid nocap drawStrokedLine
+
+%Atom 40
+{  0.800  0.800  0.800 }  6.733 inch  6.848 inch  0.139 inch drawStrokedCircle
+
+%Atom 52
+{  0.560  0.560  0.560 }  6.606 inch  8.830 inch  0.191 inch drawStrokedCircle
+
+%Atom 9
+{  0.800  0.800  0.800 }  7.147 inch  4.690 inch  0.139 inch drawStrokedCircle
+
+%Atom 57
+{  0.800  0.800  0.800 }  6.637 inch  9.336 inch  0.139 inch drawStrokedCircle
+
+%Atom 81
+{  0.800  0.800  0.800 }  2.515 inch  1.020 inch  0.139 inch drawStrokedCircle
+
+%Atom 10
+{  0.800  0.800  0.800 }  7.206 inch  5.829 inch  0.139 inch drawStrokedCircle
+
+%Bond 52 46
+colorBallStick  6.441 inch  8.734 inch  6.366 inch  8.690 inch widthBallStick solid capped drawStrokedLine
+
+%Bond 52 57
+colorBallStick  6.618 inch  9.021 inch  6.629 inch  9.197 inch widthBallStick solid nocap drawStrokedLine
+
+%Bond 52 58
+colorBallStick  6.785 inch  8.763 inch  6.948 inch  8.701 inch widthBallStick solid nocap drawStrokedLine
+
+%Atom 58
+{  0.800  0.800  0.800 }  7.078 inch  8.651 inch  0.139 inch drawStrokedCircle
+
+%Atom 60
+{  0.800  0.800  0.800 }  5.332 inch  1.789 inch  0.139 inch drawStrokedCircle
+
+%Atom 59
+{  0.560  0.560  0.560 }  4.883 inch  2.024 inch  0.191 inch drawStrokedCircle
+
+%Bond 60 59
+colorBallStick  5.209 inch  1.854 inch  5.053 inch  1.936 inch widthBallStick solid nocap drawStrokedLine
+
+%Bond 59 61
+colorBallStick  4.915 inch  2.213 inch  4.944 inch  2.385 inch widthBallStick solid nocap drawStrokedLine
+
+%Atom 61
+{  0.800  0.800  0.800 }  4.968 inch  2.522 inch  0.139 inch drawStrokedCircle
+
+%Atom 71
+{  0.560  0.560  0.560 }  1.792 inch  2.044 inch  0.191 inch drawStrokedCircle
+
+%Bond 71 72
+colorBallStick  1.755 inch  2.232 inch  1.722 inch  2.403 inch widthBallStick solid nocap drawStrokedLine
+
+%Bond 71 73
+colorBallStick  1.626 inch  1.950 inch  1.473 inch  1.862 inch widthBallStick solid nocap drawStrokedLine
+
+%Atom 73
+{  0.800  0.800  0.800 }  1.352 inch  1.793 inch  0.139 inch drawStrokedCircle
+
+%Atom 72
+{  0.800  0.800  0.800 }  1.695 inch  2.539 inch  0.139 inch drawStrokedCircle
+
+%Atom 54
+{  0.800  0.800  0.800 }  5.741 inch  8.808 inch  0.139 inch drawStrokedCircle
+
+%Bond 54 46
+colorBallStick  5.867 inch  8.749 inch  6.028 inch  8.674 inch widthBallStick solid nocap drawStrokedLine
+
+%Atom 43
+{  0.560  0.560  0.560 }  6.132 inch  7.888 inch  0.191 inch drawStrokedCircle
+
+%Bond 43 46
+colorBallStick  6.151 inch  8.078 inch  6.183 inch  8.404 inch widthBallStick solid nocap drawStrokedLine
+
+%Bond 43 47
+colorBallStick  6.305 inch  7.805 inch  6.461 inch  7.731 inch widthBallStick solid nocap drawStrokedLine
+
+%Bond 43 48
+colorBallStick  5.964 inch  7.798 inch  5.951 inch  7.791 inch widthBallStick solid capped drawStrokedLine
+
+%Atom 46
+{  0.560  0.560  0.560 }  6.201 inch  8.594 inch  0.191 inch drawStrokedCircle
+
+%Atom 62
+{  0.800  0.800  0.800 }  4.633 inch  1.871 inch  0.139 inch drawStrokedCircle
+
+%Atom 47
+{  0.800  0.800  0.800 }  6.586 inch  7.671 inch  0.139 inch drawStrokedCircle
+
+%Atom 74
+{  0.800  0.800  0.800 }  2.068 inch  1.914 inch  0.139 inch drawStrokedCircle
+
+%Atom 48
+{  0.800  0.800  0.800 }  5.828 inch  7.726 inch  0.139 inch drawStrokedCircle
+
+%Atom 53
+{  0.800  0.800  0.800 }  6.395 inch  8.734 inch  0.139 inch drawStrokedCircle
+
+showpage
+%%Trailer
+%%EOF
