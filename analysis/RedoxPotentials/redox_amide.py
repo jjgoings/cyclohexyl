@@ -17,18 +17,21 @@ def gibbs(prefix,configuration):
 
 mode = 2
 #ref = ('mono','E2PT',0.36)
-ref = ('di','E3PT',0.30)
+ref = ('di','E3PT',0.30 + 0.46) # V vs SCE in DCM, instead of Fc
 #ref = ('tri','E4PT',0.24)
 
 print('Using reference midpoint potential from: ','cyclohexyl-'+ref[0]+'-BIP ('+ref[1]+')','('+str(ref[2])+' V)') 
 
-A = ('amide-mono','E0PT')
+a = ('amide-mono','E0PT')
+b = ('amide-mono','E1PT')
+c = ('amide-mono','E2PT')
 
-dGc = (gibbs(ref[0],'neutral') + gibbs(A[0],A[1]) - gibbs(A[0],'neutral') - gibbs(ref[0],ref[1]))
-
-Eref = ref[2]
-
-print('E('+A[0]+'-BIP-'+A[1]+'):  \t','{:.3f} V'.format(dGc*27.2114 + Eref))
+for A in [a,b,c]:
+    dGc = (gibbs(ref[0],'neutral') + gibbs(A[0],A[1]) - gibbs(A[0],'neutral') - gibbs(ref[0],ref[1]))
+    
+    Eref = ref[2] # V vs SCE in DCM
+    
+    print('E('+A[0]+'-BIP-'+A[1]+'):  \t','{:.3f} V'.format(dGc*27.2114 + Eref))
 
 
 
