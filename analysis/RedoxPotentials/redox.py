@@ -7,6 +7,7 @@ def gibbs(prefix,configuration,mode=1):
     if mode == 1:
         path = '../../'+prefix+'BIP/'+configuration+'/opt_freq/'
         filename = path+'cyclohexyl-'+prefix+'BIP-'+configuration+'.log'
+        print(filename)
 
         command = ["python", "-m", "goodvibes", 
                     "-q", "grimme",
