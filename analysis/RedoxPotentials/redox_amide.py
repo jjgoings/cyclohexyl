@@ -25,8 +25,9 @@ print('Using reference midpoint potential from: ','cyclohexyl-'+ref[0]+'-BIP ('+
 a = ('amide-mono','E0PT')
 b = ('amide-mono','E1PT')
 c = ('amide-mono','E2PT')
+d = ('amide-mono','E2PTz')
 
-for A in [a,b,c]:
+for A in [a,b,c,d]:
     dGc = (gibbs(ref[0],'neutral') + gibbs(A[0],A[1]) - gibbs(A[0],'neutral') - gibbs(ref[0],ref[1]))
     
     Eref = ref[2] # V vs SCE in DCM
