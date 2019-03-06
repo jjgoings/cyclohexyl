@@ -15,7 +15,6 @@ def gibbs(prefix,configuration):
         data = cclib.io.ccread(filename)
         return data.freeenergy
 
-mode = 2
 #ref = ('mono','E2PT',0.36)
 #ref = ('di','E3PT',0.30 + 0.46) # V vs SCE in DCM, instead of Fc
 ref = ('unsub-mono','E1PT',1.04) # V vs SCE in DCM
