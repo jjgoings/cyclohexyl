@@ -55,7 +55,7 @@ class Molecule(object):
                
     def get_structures(self):
         #print('Checking ',self.prefix+'BIP-cyclohexylimine structures...')
-        doc = docx.Document()
+        doc = docx.Document('./template.docx') # read in tempalte document with table style defined
         style = doc.styles['Normal']
         font = style.font
         font.name = 'Helvetica'
@@ -63,7 +63,7 @@ class Molecule(object):
             df = pd.DataFrame(data={'atom': data.atoms, 'x':data.coords[:,0],'y':data.coords[:,1],'z':data.coords[:,2]})
             doc.add_paragraph('Table S#. Cartesian coordinates for %s (%.8f Hartrees)' % (data.name,data.energy))
             t = doc.add_table(df.shape[0]+1, df.shape[1])
-            t.style = 'Light Shading'
+            t.style = 'jjg2' # must be defined in a template document...here called "template.docx"
             
             # add the header rows.
             for j in range(df.shape[-1]):
@@ -72,7 +72,10 @@ class Molecule(object):
             # add the rest of the data frame
             for i in range(df.shape[0]):
                 for j in range(df.shape[-1]):
-                    t.cell(i+1,j).text = str(df.values[i,j])
+                    if j == 0:
+                        t.cell(i+1,j).text = str(df.values[i,j])
+                    else:
+                        t.cell(i+1,j).text = "{:10.6f}".format(df.values[i,j])
             
             doc.add_page_break() 
             # save the doc
