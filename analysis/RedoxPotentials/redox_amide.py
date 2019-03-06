@@ -4,7 +4,7 @@ import os
 import numpy as np
 
 def gibbs(prefix,configuration):
-    if prefix =='amide-mono':
+    if prefix in ['amide-mono','unsub-mono']:
         path = '../../'+prefix+'BIP/'+configuration+'/thermo/'
         filename = path+prefix+'BIP-'+configuration+'.log'
         data = cclib.io.ccread(filename)
@@ -17,10 +17,15 @@ def gibbs(prefix,configuration):
 
 mode = 2
 #ref = ('mono','E2PT',0.36)
-ref = ('di','E3PT',0.30 + 0.46) # V vs SCE in DCM, instead of Fc
+#ref = ('di','E3PT',0.30 + 0.46) # V vs SCE in DCM, instead of Fc
+ref = ('unsub-mono','E1PT',1.04) # V vs SCE in DCM
 #ref = ('tri','E4PT',0.24)
 
-print('Using reference midpoint potential from: ','cyclohexyl-'+ref[0]+'-BIP ('+ref[1]+')','('+str(ref[2])+' V)') 
+if ref[0] in ['unsub-mono','aminde-mono']:
+    print('Using reference midpoint potential from: ',ref[0]+'-BIP ('+ref[1]+')','('+str(ref[2])+' V)') 
+else:
+    print('Using reference midpoint potential from: ','cyclohexyl-'+ref[0]+'-BIP ('+ref[1]+')','('+str(ref[2])+' V)') 
+
 
 a = ('amide-mono','E0PT')
 b = ('amide-mono','E1PT')
