@@ -5,6 +5,7 @@ import docx
 import numpy as np
 #import matplotlib.pyplot as plt
 import os
+from docx.shared import Pt
 
 #sns.set_color_codes()
 
@@ -58,10 +59,15 @@ class Molecule(object):
         doc = docx.Document('./template.docx') # read in tempalte document with table style defined
         style = doc.styles['Normal']
         font = style.font
-        font.name = 'Helvetica'
+        font.name = 'Times New Roman'
+        font.size = Pt(12)
         for state,data in [(x,getattr(self,x.lower())) for x in self.states]: 
             df = pd.DataFrame(data={'atom': data.atoms, 'x':data.coords[:,0],'y':data.coords[:,1],'z':data.coords[:,2]})
-            doc.add_paragraph('Table S#. Cartesian coordinates for %s (%.8f Hartrees)' % (data.name,data.energy))
+            #doc.add_paragraph('Table S#. Cartesian coordinates for %s (%.8f Hartrees)' % (data.name,data.energy))
+            p = doc.add_paragraph()
+            runner = p.add_run('Table S#.') 
+            runner.bold = True
+            runner2 = p.add_run(' Cartesian coordinates for %s (%.8f Hartrees)' % (data.name,data.energy))
             t = doc.add_table(df.shape[0]+1, df.shape[1])
             t.style = 'jjg2' # must be defined in a template document...here called "template.docx"
             

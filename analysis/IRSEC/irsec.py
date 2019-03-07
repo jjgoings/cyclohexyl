@@ -3,6 +3,16 @@ import seaborn as sns
 import numpy as np
 import matplotlib.pyplot as plt
 import os
+import matplotlib
+
+# Say, "the default sans-serif font is COMIC SANS"
+matplotlib.rcParams['font.sans-serif'] = "Arial"
+# Then, "ALWAYS use sans-serif fonts"
+matplotlib.rcParams['font.family'] = "sans-serif"
+#matplotlib.rcParams['mathtext.fontset'] = 'custom'
+#matplotlib.rcParams['mathtext.rm'] = 'Arial'
+#matplotlib.rcParams['mathtext.it'] = 'Arial:italic'
+#matplotlib.rcParams['mathtext.bf'] = 'Arial:bold'
 
 sns.set_color_codes()
 
@@ -33,14 +43,20 @@ class Molecule(object):
         self.prefix  = str(prefix)
         path = '../../'+self.prefix+'BIP/'
 
+        if prefix == 'mono': num = str(2)
+        if prefix == 'di':   num = str(3)
+        if prefix == 'tri':  num = str(4)
+
         for state in ['neutral','E0PT','E1PT','E2PT','E3PT','E4PT']:
             logfile = path+state+'/opt_freq/cyclohexyl-'+self.prefix+'BIP-'+state+'.log'
             if os.path.isfile(logfile):
                 setattr(self,state.lower(),IRSpec(path+state+'/opt_freq/cyclohexyl-'+self.prefix+'BIP-'+state+'.log'))
                 if state == 'neutral':
-                    setattr(getattr(self,state.lower()),'name','['+self.prefix+'-BIP-cyclohexylimine]')
+                    #setattr(getattr(self,state.lower()),'name','['+self.prefix+'-BIP-cyclohexylimine]')
+                    setattr(getattr(self,state.lower()),'name','[$\\bf{'+num+'}$]')
                 else:
-                    setattr(getattr(self,state.lower()),'name','['+self.prefix+'-BIP-cyclohexylimine]$^{+\\bullet}$')
+                    #setattr(getattr(self,state.lower()),'name','['+self.prefix+'-BIP-cyclohexylimine]$^{+\\bullet}$')
+                    setattr(getattr(self,state.lower()),'name','[$\\bf{'+num+'}$]$^{+\\bullet}$')
   
         self.freq  = self.neutral.x # assumes neutral always exists! 
 
@@ -112,7 +128,7 @@ class Molecule(object):
         if save:
             if isinstance(save,str):
                 plt.tight_layout()
-                plt.savefig(save)
+                plt.savefig(save,dpi=300)
             else:
                 raise ValueError("'save' needs to be your filename!")
         if show:
@@ -138,7 +154,7 @@ class Molecule(object):
         if save:
             if isinstance(save,str):
                 plt.tight_layout()
-                plt.savefig(save)
+                plt.savefig(save,dpi=300)
             else:
                 raise ValueError("'save' needs to be your filename!")
         if show:
@@ -164,16 +180,16 @@ if __name__ == '__main__':
 #    tri.plotSpectra(curves=[tri.neutral,tri.e4pt],interpolate=True,num=5,xlim=[1700,1300],show=True)
 
     mono = Molecule('mono')
-    mono.plotSpectra(curves=[mono.neutral,mono.e2pt],interpolate=True,num=5,xlim=[1700,1300],show=False,save='monoIRSEC.pdf',colors='b')
+    mono.plotSpectra(curves=[mono.neutral,mono.e2pt],interpolate=True,num=5,xlim=[1700,1300],show=False,save='monoIRSEC.png',colors='b')
     di = Molecule('di')
-    di.plotSpectra(curves=[di.neutral,di.e3pt],interpolate=True,num=5,xlim=[1700,1300],show=False,save='diIRSEC.pdf',colors='g')
+    di.plotSpectra(curves=[di.neutral,di.e3pt],interpolate=True,num=5,xlim=[1700,1300],show=False,save='diIRSEC.png',colors='g')
     tri = Molecule('tri')
-    tri.plotSpectra(curves=[tri.neutral,tri.e4pt],interpolate=True,num=5,xlim=[1700,1300],show=False,save='triIRSEC.pdf',colors='r')
+    tri.plotSpectra(curves=[tri.neutral,tri.e4pt],interpolate=True,num=5,xlim=[1700,1300],show=False,save='triIRSEC.png',colors='r')
     mono = Molecule('mono')
-    mono.plotSpectra(curves=[mono.neutral,mono.e2pt],interpolate=True,num=5,xlim=[3500,3200],show=False,save='monoIRSEC_3500.pdf',colors='b')
+    mono.plotSpectra(curves=[mono.neutral,mono.e2pt],interpolate=True,num=5,xlim=[3500,3200],show=False,save='monoIRSEC_3500.png',colors='b')
     di = Molecule('di')
-    di.plotSpectra(curves=[di.neutral,di.e3pt],interpolate=True,num=5,xlim=[3500,3200],show=False,save='diIRSEC_3500.pdf',colors='g')
+    di.plotSpectra(curves=[di.neutral,di.e3pt],interpolate=True,num=5,xlim=[3500,3200],show=False,save='diIRSEC_3500.png',colors='g')
     tri = Molecule('tri')
-    tri.plotSpectra(curves=[tri.neutral,tri.e4pt],interpolate=True,num=5,xlim=[3500,3150],show=False,save='triIRSEC_3500.pdf',colors='r')
+    tri.plotSpectra(curves=[tri.neutral,tri.e4pt],interpolate=True,num=5,xlim=[3500,3150],show=False,save='triIRSEC_3500.png',colors='r')
 
 

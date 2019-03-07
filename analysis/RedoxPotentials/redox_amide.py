@@ -17,7 +17,7 @@ def gibbs(prefix,configuration):
 
 #ref = ('mono','E2PT',0.36)
 #ref = ('di','E3PT',0.30 + 0.46) # V vs SCE in DCM, instead of Fc
-ref = ('unsub-mono','E1PT',1.04) # V vs SCE in DCM
+ref = ('unsub-mono','E1PT',0.95) # V vs SCE in DCM
 #ref = ('tri','E4PT',0.24)
 
 if ref[0] in ['unsub-mono','aminde-mono']:
