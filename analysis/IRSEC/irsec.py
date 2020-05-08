@@ -22,7 +22,7 @@ class IRSpec(object):
         self.scale = 0.9631 # fit to tri-BIP E4PT protonated imine 
         self.freqs = self.data.vibfreqs*self.scale
         self.irs   = self.data.vibirs
-        self.FWHM  = 12
+        self.FWHM  = 10
         self.xlim  = (0,4000,0.5)
         self.curvefit()
     
@@ -52,11 +52,11 @@ class Molecule(object):
             if os.path.isfile(logfile):
                 setattr(self,state.lower(),IRSpec(path+state+'/opt_freq/cyclohexyl-'+self.prefix+'BIP-'+state+'.log'))
                 if state == 'neutral':
-                    #setattr(getattr(self,state.lower()),'name','['+self.prefix+'-BIP-cyclohexylimine]')
-                    setattr(getattr(self,state.lower()),'name','[$\\bf{'+num+'}$]')
+                    setattr(getattr(self,state.lower()),'name','['+self.prefix+'-BIP-cyclohexylimine]')
+                    #setattr(getattr(self,state.lower()),'name','[$\\bf{'+num+'}$]')
                 else:
-                    #setattr(getattr(self,state.lower()),'name','['+self.prefix+'-BIP-cyclohexylimine]$^{+\\bullet}$')
-                    setattr(getattr(self,state.lower()),'name','[$\\bf{'+num+'}$]$^{+\\bullet}$')
+                    setattr(getattr(self,state.lower()),'name','['+self.prefix+'-BIP-cyclohexylimine]$^{+\\bullet}$')
+                    #setattr(getattr(self,state.lower()),'name','[$\\bf{'+num+'}$]$^{+\\bullet}$')
   
         self.freq  = self.neutral.x # assumes neutral always exists! 
 
@@ -79,6 +79,7 @@ class Molecule(object):
                     label = start.name
                     color = 'black'
                     zorder = 2
+                    lw = 3
                 elif step == np.linspace(0,num,num=num)[-1]:
                     label = finish.name
                     if not colors:
@@ -86,13 +87,15 @@ class Molecule(object):
                     else:
                         color = colors
                     zorder = 3
+                    lw = 3
                 else:
                     label = None
                     color = 'gray'
                     zorder = 1
-                plt.plot(self.freq,curve,label=label,color=color,zorder=zorder,lw=2)
+                    lw = 1
+                plt.plot(self.freq,curve,label=label,color=color,zorder=zorder,lw=lw)
            #plt.ylim([-50,max(max(start.curve),max(finish.curve))])
-            plt.ylim([-50,1200])
+            plt.ylim([-20,800])
             #w = 3
             #plt.axvspan(1659+w, 1638-w, facecolor='r', alpha=0.2,zorder=-1,label='imine C=N str')
             #plt.axvspan(1616+w, 1563-w, facecolor='orange', alpha=0.2,zorder=-1,label='aromatic sym C=C str')
@@ -115,7 +118,7 @@ class Molecule(object):
                 plt.ylim([-50,1300])
             
             
-        plt.legend(fontsize=14)
+        plt.legend(fontsize=16)
         plt.xlim(xlim)
         plt.xticks(np.arange(min(xlim),max(xlim),50),fontsize=14)
         ax.set_xticks(np.arange(min(xlim),max(xlim),25),minor=True)
@@ -123,7 +126,8 @@ class Molecule(object):
         plt.yticks([0],fontsize=14)
         #plt.grid(color='gray',alpha=0.4)
         plt.grid(color='gray',alpha=0.4,which='minor',ls='--')
-        plt.xlabel(r'$\tilde{\nu}$ (cm$^{-1}$)',fontsize=24)
+        #plt.xlabel(r'$\tilde{\nu}$ (cm$^{-1}$)',fontsize=24)
+        plt.xlabel(r'Wavenumber (cm$^{-1}$)',fontsize=24)
         plt.ylabel('Intensity (arb. units)',fontsize=24)
         if save:
             if isinstance(save,str):
@@ -176,20 +180,21 @@ class Molecule(object):
             np.savetxt(output,peaks,fmt='%.1f',delimiter=',')
 
 if __name__ == '__main__':
-#    tri = Molecule('tri')
-#    tri.plotSpectra(curves=[tri.neutral,tri.e4pt],interpolate=True,num=5,xlim=[1700,1300],show=True)
+    tri = Molecule('tri')
+    tri.plotSpectra(curves=[tri.neutral,tri.e3pt],interpolate=True,num=5,xlim=[1700,1500],show=True,colors='#067E00',save='tri-E3PT.pdf')
+    tri.plotSpectra(curves=[tri.neutral,tri.e4pt],interpolate=True,num=5,xlim=[1700,1500],show=True,colors='#067E00',save='tri-E4PT.pdf')
 
-    mono = Molecule('mono')
-    mono.plotSpectra(curves=[mono.neutral,mono.e2pt],interpolate=True,num=5,xlim=[1700,1300],show=False,save='monoIRSEC.png',colors='b')
-    di = Molecule('di')
-    di.plotSpectra(curves=[di.neutral,di.e3pt],interpolate=True,num=5,xlim=[1700,1300],show=False,save='diIRSEC.png',colors='g')
-    tri = Molecule('tri')
-    tri.plotSpectra(curves=[tri.neutral,tri.e4pt],interpolate=True,num=5,xlim=[1700,1300],show=False,save='triIRSEC.png',colors='r')
-    mono = Molecule('mono')
-    mono.plotSpectra(curves=[mono.neutral,mono.e2pt],interpolate=True,num=5,xlim=[3500,3200],show=False,save='monoIRSEC_3500.png',colors='b')
-    di = Molecule('di')
-    di.plotSpectra(curves=[di.neutral,di.e3pt],interpolate=True,num=5,xlim=[3500,3200],show=False,save='diIRSEC_3500.png',colors='g')
-    tri = Molecule('tri')
-    tri.plotSpectra(curves=[tri.neutral,tri.e4pt],interpolate=True,num=5,xlim=[3500,3150],show=False,save='triIRSEC_3500.png',colors='r')
+#    mono = Molecule('mono')
+#    mono.plotSpectra(curves=[mono.neutral,mono.e2pt],interpolate=True,num=5,xlim=[1700,1300],show=False,save='monoIRSEC.png',colors='b')
+#    di = Molecule('di')
+#    di.plotSpectra(curves=[di.neutral,di.e3pt],interpolate=True,num=5,xlim=[1700,1300],show=False,save='diIRSEC.png',colors='g')
+#    tri = Molecule('tri')
+#    tri.plotSpectra(curves=[tri.neutral,tri.e4pt],interpolate=True,num=5,xlim=[1700,1300],show=False,save='triIRSEC.png',colors='r')
+#    mono = Molecule('mono')
+#    mono.plotSpectra(curves=[mono.neutral,mono.e2pt],interpolate=True,num=5,xlim=[3500,3200],show=False,save='monoIRSEC_3500.png',colors='b')
+#    di = Molecule('di')
+#    di.plotSpectra(curves=[di.neutral,di.e3pt],interpolate=True,num=5,xlim=[3500,3200],show=False,save='diIRSEC_3500.png',colors='g')
+#    tri = Molecule('tri')
+#    tri.plotSpectra(curves=[tri.neutral,tri.e4pt],interpolate=True,num=5,xlim=[3500,3150],show=False,save='triIRSEC_3500.png',colors='r')
 
 

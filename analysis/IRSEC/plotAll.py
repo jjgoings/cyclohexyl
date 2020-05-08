@@ -85,13 +85,13 @@ for row,mol in enumerate([Molecule('mono'),Molecule('di'),Molecule('tri')]):
  
         if mol.prefix == 'mono': 
             curves = [mol.neutral,mol.e2pt]
-            colors='b'
+            colors='#2200F5'
         if mol.prefix == 'di':   
             curves = [mol.neutral,mol.e3pt]
-            colors='g'
+            colors='#EA35F8'
         if mol.prefix == 'tri':  
             curves = [mol.neutral,mol.e4pt]
-            colors='r'
+            colors='#367E21'
     
         if region == 'high': xlim = [3500,3200]
         if region == 'low':  xlim = [1700,1300]
@@ -111,6 +111,8 @@ for row,mol in enumerate([Molecule('mono'),Molecule('di'),Molecule('tri')]):
                 curve = ((num - step)/num)*start.curve + (step/num)*finish.curve
                 if step == 0:
                     label = start.name
+                    ls = '-'
+                    lw = 2 
                     color = 'black'
                     zorder = 2
                 elif step == np.linspace(0,num,num=num)[-1]:
@@ -120,11 +122,15 @@ for row,mol in enumerate([Molecule('mono'),Molecule('di'),Molecule('tri')]):
                     else:
                         color = colors
                     zorder = 3
+                    ls = '-'
+                    lw = 2 
                 else:
                     label = None
-                    color = 'gray'
+                    color = colors 
                     zorder = 1
-                ax[row,col].plot(mol.freq,curve,label=label,color=color,zorder=zorder,lw=2)
+                    ls = '-'
+                    lw = 1
+                ax[row,col].plot(mol.freq,curve,label=label,color=color,zorder=zorder,lw=lw)
            #plt.ylim([-50,max(max(start.curve),max(finish.curve))])
             ax[row,col].set_ylim([-50,1200])
             #w = 3
